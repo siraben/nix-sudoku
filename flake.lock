@@ -1,0 +1,26 @@
+{
+  "nodes": {
+    "root": {
+      "inputs": {
+        "stdlib": "stdlib"
+      }
+    },
+    "stdlib": {
+      "locked": {
+        "lastModified": 1635176326,
+        "narHash": "sha256-EI9lCID4NyItaPWC140G4va9+UFfJ56LvawIPsHgf58=",
+        "owner": "manveru",
+        "repo": "nix-lib",
+        "rev": "d81d9411ade8f5cc6cfc08977a1f1ff6f64e49b1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "manveru",
+        "repo": "nix-lib",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

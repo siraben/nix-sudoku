@@ -1,11 +1,8 @@
-puzzle:
-with ((import <nixpkgs> {}).lib);
+{ lib ? (import <nixpkgs> {}).lib }:
+with lib;
 
 let
-  BOARD-SIZE = 9;
-  ROWS = 9;
-  COLS = 9;
-  GRID-SIZE = 3;
+  BOARD-SIZE = 9; ROWS = 9; COLS = 9; GRID-SIZE = 3;
   get-row = r: board: elemAt board r;
   get-column = c: board: map (row: elemAt row c) board;
   get-block = br: bc: puzzle:
@@ -41,6 +38,10 @@ let
       in or' (and' nb (go 1 nr nc nb))
              (go (n + 1) r c board);
   solve = go 1 0 0;
-  res = solve (readPuzzle puzzle);
 in
-  if res == false then "No solution!" else print-board res
+{
+  inherit solve readPuzzle;
+  solveFile = f: solve (readPuzzle f);
+  demo = f: let res = solve (readPuzzle f); in
+    if res == false then "No solution!" else print-board res;
+}
