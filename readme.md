@@ -2,8 +2,13 @@
 
 Sudoku solver in Nix using a simple backtracking algorithm.
 
-Run the following command, replacing `./puzzle1.txt` with the path of a puzzle of your choice (with zeroes representing blank squares).
+Run the following command, replacing `./puzzle1.txt` with the path of a puzzle of your choice (with zeroes representing blank squares).  No need to check out the repo.
 
+```ShellSession
+$ nix eval --impure --raw github:siraben/nix-sudoku#lib.demo --apply 'f: f ./puzzle1.txt'
+```
+
+Otherwise, `cd` into a checkout of repo and run the following command
 ```ShellSession
 $ nix-instantiate --eval -E '(import ./sudoku.nix {}).demo ./puzzle1.txt' | jq -r
 # or using newer Nix command
@@ -25,7 +30,7 @@ No solution!
 Beats solving by hand.  If you know how to make it faster, please submit PRs!
 
 ```
-$ nix run nixpkgs#hyperfine -- "nix-instantiate --eval -E 'import ./sudoku.nix ./puzzle1.txt'"
+$ nix run nixpkgs#hyperfine -- "nix-instantiate --eval -E '(import ./sudoku.nix {}).demo ./puzzle1.txt'"
 Benchmark 1: nix-instantiate --eval -E '(import ./sudoku.nix {}).demo ./puzzle1.txt'
   Time (mean ± σ):     809.3 ms ±  19.5 ms    [User: 690.2 ms, System: 100.8 ms]
   Range (min … max):   782.9 ms … 846.5 ms    10 runs
