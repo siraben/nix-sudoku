@@ -42,5 +42,6 @@ let
       in or' (and' nb (go 1 nr nc nb))
              (go (n + 1) r c board);
   solve = go 1 0 0;
+  res = solve (readPuzzle puzzle);
 in
-  print-board (solve (readPuzzle puzzle))
+  if res == false then "No solution!" else print-board res

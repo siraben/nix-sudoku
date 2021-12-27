@@ -17,6 +17,8 @@ $ nix eval --raw --impure --expr 'import ./sudoku.nix ./puzzle1.txt'
 8 2 1 5 6 7 4 3 9
 7 9 6 1 4 3 8 2 5
 5 3 4 8 9 2 7 1 6
+$ nix eval --raw --impure --expr 'import ./sudoku.nix ./puzzle2.txt'
+No solution!
 ```
 
 ## Why did you write this?
