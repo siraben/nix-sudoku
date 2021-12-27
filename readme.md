@@ -21,5 +21,15 @@ $ nix eval --raw --impure --expr 'import ./sudoku.nix ./puzzle2.txt'
 No solution!
 ```
 
+## How fast is it?
+Beats solving by hand.  If you know how to make it faster, please submit PRs!
+
+```
+$ nix run nixpkgs#hyperfine -- "nix-instantiate --eval -E 'import ./sudoku.nix ./puzzle1.txt'"
+Benchmark 1: nix-instantiate --eval -E 'import ./sudoku.nix ./puzzle1.txt'
+  Time (mean ± σ):     642.4 ms ±  50.4 ms    [User: 526.1 ms, System: 100.8 ms]
+  Range (min … max):   589.6 ms … 746.8 ms    10 runs
+```
+
 ## Why did you write this?
 Because I could.
