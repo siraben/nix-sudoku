@@ -11,7 +11,8 @@ let
   get-block = br: bc: puzzle:
     concatMap (r: (take GRID-SIZE (drop (GRID-SIZE * bc) r)))
               (take GRID-SIZE (drop (GRID-SIZE * br) puzzle));
-  readPuzzle = f: map (x: map toInt (splitString " " x)) (init (splitString "\n" (readFile f)));
+  readPuzzle = f: map (x: map toInt (splitString " " x))
+                      (init (splitString "\n" (readFile f)));
   get-value = board: row: col: elemAt (elemAt board row) col;
   safe-to-put = r: c: n: board:
     let v = get-value board r c; in
@@ -24,9 +25,7 @@ let
     else false;
   print-row = r: concatStringsSep " " (map toString r) + "\n";
   print-board = b: concatStrings (map print-row b);
-  list-set = l: n: x: let h = take n l;
-                           t = drop n l;
-                         in h ++ ([x] ++ (tail t));
+  list-set = l: n: x: take n l ++ [x] ++ (tail (drop n l));
   set-value = board: row: col: num:
       list-set board row (list-set (elemAt board row) col num);
   and' = x: y: if x == false then false else y;
