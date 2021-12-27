@@ -5,6 +5,8 @@ Sudoku solver in Nix using a simple backtracking algorithm.
 Run the following command, replacing `./puzzle1.txt` with the path of a puzzle of your choice (with zeroes representing blank squares).
 
 ```ShellSession
+$ nix-instantiate --eval -E 'import ./sudoku.nix ./puzzle1.txt' | jq -r
+# or using newer Nix command
 $ nix eval --raw --impure --expr 'import ./sudoku.nix ./puzzle1.txt'
 1 4 3 9 8 6 2 5 7
 6 7 9 4 2 5 3 8 1
