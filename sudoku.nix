@@ -22,7 +22,7 @@ let
     else false;
   print-row = r: concatStringsSep " " (map toString r) + "\n";
   print-board = b: concatStrings (map print-row b);
-  list-set = l: n: x: take n l ++ [x] ++ (tail (drop n l));
+  list-set = l: n: x: take n l ++ [x] ++ tail (drop n l);
   set-value = board: row: col: num:
       list-set board row (list-set (elemAt board row) col num);
   and' = x: y: if x == false then false else y;
